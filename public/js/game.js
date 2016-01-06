@@ -22,7 +22,7 @@ $.ajax({
 		console.log(res)
 		json = JSON.parse(res)
 		console.log(json)
-		photos = json[1]
+		photos = json["photos"]
 		console.log(photos)
 		photos.forEach(function(photo) {
 			$("#photos").append('<li><img data-id="' + photo.id + '" src="' + photo.url + '"/><br/><p class="hidden">' + photo.location_name + '</p></li>');
