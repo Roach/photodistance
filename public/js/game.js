@@ -1,4 +1,5 @@
 var user_geo = "";
+var closest = "";
 
 $(function() {
 
@@ -8,8 +9,7 @@ $(function() {
 	});
 
 	$('#photos').delegate('img', 'click', function() {
-		console.log(user_geo);
-		console.log($(this).data("geo-lat"));
+		console.log(closest);
 	});
 });
 
@@ -19,11 +19,9 @@ $.ajax({
   data: { location: user_geo }
 })
 	.done(function(res) {
-		console.log(res)
-		json = JSON.parse(res)
-		console.log(json)
-		photos = json["photos"]
-		console.log(photos)
+		var json = JSON.parse(res);
+		closest = json["closest"];
+		var photos = json["photos"];
 		photos.forEach(function(photo) {
 			$("#photos").append('<li><img data-id="' + photo.id + '" src="' + photo.url + '"/><br/><p class="hidden">' + photo.location_name + '</p></li>');
 		});
