@@ -43,7 +43,7 @@ def get_photos(user_location)
     }
   end
   with_geo_data.sort! { |k| k[:distance] }
-  { :closest => with_geo_data[0][:id], :photos => with_geo_data.shuffle.to_json }
+  { "closest" => with_geo_data[0][:id], "photos" => with_geo_data.shuffle }.to_json
 end
 
 def get_distance(user_location, photo_geo)
