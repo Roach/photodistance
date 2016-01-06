@@ -42,17 +42,14 @@ def get_photos(user_location)
       :distance => get_distance(user_location, photo_geo)
     }
   end
-  with_geo_data.to_json
+  with_geo_data.sort! { |k| k[:distance] }
+  { :closest => with_geo_data[0][:id], :photos => with_geo_data.shuffle.to_json }
 end
 
 def get_distance(user_location, photo_geo)
-  photo_coords = [photo_geo.latitude, photo_geo.longitude]
+  photo_coords = [photo_geo.latitude, photo_geo.longitude].map{ |i| i.to_i}
   user_coords = user_location.split(',').map{ |i| i.to_i}
-  puts photo_coords
-  puts user_coords
-  dist = distance(user_coords, photo_coords)
-  puts dist
-  dist
+  distance(user_coords, photo_coords)
 end
 
 get '/' do

@@ -19,9 +19,13 @@ $.ajax({
   data: { location: user_geo }
 })
 	.done(function(res) {
-		photos = JSON.parse(res)
+		console.log(res)
+		json = JSON.parse(res)
+		console.log(json)
+		photos = json[1]
+		console.log(photos)
 		photos.forEach(function(photo) {
-			$("#photos").append('<img src="' + photo.url + '" data-geo-lat="' + photo.geo.latitude + '" data-geo-lng="' + photo.geo.longitude + '"/>');
+			$("#photos").append('<li><img data-id="' + photo.id + '" src="' + photo.url + '"/><br/><p class="hidden">' + photo.location_name + '</p></li>');
 		});
 	})
 	.fail(function() {
