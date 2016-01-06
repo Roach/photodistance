@@ -9,13 +9,12 @@
 		<script src="/js/game.js"></script>
 	</head>
 	<body>
-		<p>@Hello world!</p>
-		<div id="photos"></div>
 		{{#authenticated}}
-			AUTHED
+			<p>Which photo's location is closest to you?</p>
+			<div id="photos"></div>
 		{{/authenticated}}
 		{{^authenticated}}
-			NOT AUTHED
+			<p>Unable to authenticate you on Flickr's API.</p>
 		{{/authenticated}}
 	</body>
 </html>
