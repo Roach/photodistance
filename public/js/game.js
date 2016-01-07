@@ -10,12 +10,16 @@ $(function() {
 
 	$('#photos').delegate('li', 'click', function() {
 		// if ($(this).attr('data-id') == closest) {
+		// }
 			$("#photos li[data-id=" + closest + "]").addClass("closest");
-		  $('#photos li:not(.closest)').animate({
+		  $("#photos li:not(.closest)").animate({
 		    opacity: 0.25,
 		    top: "+=50"
 		  }, 500);
-		// }
+		  $(".label").show(500);
+		  $('html, body').animate({
+				scrollTop: $(".closest").offset().top
+			}, 1000);
 	});
 });
 
@@ -29,7 +33,7 @@ $.ajax({
 		closest = json["closest"];
 		var photos = json["photos"];
 		photos.forEach(function(photo) {
-			$("#photos").append('<li data-id="' + photo.id + '"><img src="' + photo.url + '"/><p class="hidden">' + photo.location_name + '<br/>' + photo.distance_string + '</p></li>');
+			$("#photos").append('<li data-id="' + photo.id + '"><img src="' + photo.url + '"/><p class="label">' + photo.location_name + '<br/>' + photo.distance_string + '</p></li>');
 		});
 	})
 	.fail(function() {
