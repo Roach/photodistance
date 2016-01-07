@@ -33,7 +33,7 @@ $.ajax({
 		closest = json["closest"];
 		var photos = json["photos"];
 		photos.forEach(function(photo) {
-			$("#photos").append('<li data-id="' + photo.id + '"><img src="' + photo.url + '"/><p class="label">' + photo.location_name + '<br/>' + photo.distance_string + '</p></li>');
+			$("#photos").append('<p class="label">' + photo.location_name + '<br/>' + photo.distance_string + '</p><li data-id="' + photo.id + '"><img src="' + photo.url + '"/></li>');
 		});
 	})
 	.fail(function() {
