@@ -1,7 +1,5 @@
-.label { display: none;}
+.label { display: none; margin-bottom: none; }
 #photos { width: 50%; margin: auto; }
 #photos li { display: block; }
 #photos li img { width: 100%; }
 #photos li p { bottom: -40px; }
-/*.wrong { opacity: 0.2; }
-*/
