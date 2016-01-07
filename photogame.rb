@@ -44,7 +44,6 @@ def get_photos(user_location)
     }
   end
   sorted = with_geo_data.sort_by { |k| k[:distance] }
-  puts sorted
   { "closest" => sorted.first[:id], "photos" => with_geo_data.shuffle }.to_json
 end
 
