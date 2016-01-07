@@ -8,9 +8,17 @@ $(function() {
 		load_photos();
 	});
 
+	$('#retry-link').click(function( event ) {
+		event.preventDefault();
+		$("#photos").empty();
+		load_photos();
+	});
+
 	$('#photos').delegate('li', 'click', function() {
-		// if ($(this).attr('data-id') == closest) {
-		// }
+			// if ($(this).attr('data-id') == closest) {
+			// todo: increment score
+			// }
+
 			$("#photos li[data-id=" + closest + "]").addClass("closest");
 		  $("#photos li:not(.closest)").animate({
 		    opacity: 0.25,

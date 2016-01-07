@@ -1,5 +1,7 @@
-.label { display: none; margin-bottom: none; }
-#photos { width: 50%; margin: auto; }
+#retry-link { position: fixed; top: 25px; left: 25px; }
+.label { display: none; margin-bottom: 0px; }
+#main { width: 50%; margin: auto; }
+#photos { padding: 0px; margin: 0px; }
 #photos li { display: block; }
 #photos li img { width: 100%; }
 #photos li p { bottom: -40px; }
