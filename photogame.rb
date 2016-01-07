@@ -31,7 +31,7 @@ end
 
 def get_photos(user_location)
   # Get 5 photos, extract ID, URL and GEO, then format the JSON.
-  photos = flickr.photos.search(:page => rand(100), :per_page => 250, :has_geo => true, :accuracy => 12, :tags => ["landscapes"])
+  photos = flickr.photos.search(:page => rand(100), :per_page => 250, :has_geo => true, :accuracy => 10, :tags => ["landscapes"])
   with_geo_data = photos.to_a.sample(5).map do |p|
     photo_info = flickr.photos.getInfo(:photo_id => p.id)
     photo_geo = photo_info.location
@@ -58,7 +58,13 @@ get '/' do
 end
 
 get '/getphotos.json' do
+begin
   get_photos(params[:location])
+rescue Exception => e
+  status 500
+  { :error => e }.to_json
+end
+
 end
 
 class GameUI < Mustache

@@ -10,9 +10,10 @@
 	</head>
 	<body>
 		<div id="main">
+			<div id="errors"></div>
 			{{#authenticated}}
 				<a href="#" id="retry-link">Retry</a>
-				<p>Which photo's location is closest to you?</p>
+				<h2>Which photo's location is closest to you?</h2>
 				<ul id="photos"></ul>
 			{{/authenticated}}
 			{{^authenticated}}

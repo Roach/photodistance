@@ -32,10 +32,12 @@ $(function() {
 });
 
 var load_photos = function() {
-$.ajax({
-  url: "getphotos.json",
-  data: { location: user_geo }
-})
+	$("#errors").hide();
+
+	$.ajax({
+	  url: "getphotos.json",
+	  data: { location: user_geo }
+	})
 	.done(function(res) {
 		var json = JSON.parse(res);
 		closest = json["closest"];
@@ -44,7 +46,8 @@ $.ajax({
 			$("#photos").append('<li data-id="' + photo.id + '"><img src="' + photo.url + '"/><p class="label">' + photo.location_name + ' (' + photo.distance_string + ')</p></li>');
 		});
 	})
-	.fail(function() {
-		console.log( "error" );
+	.fail(function(res) {
+		$("#errors").html("<h3>Error loading photos, please try again.</h3>");
+		$("#errors").show();
 	});
 }
