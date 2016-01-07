@@ -8,8 +8,14 @@ $(function() {
 		load_photos();
 	});
 
-	$('#photos').delegate('img', 'click', function() {
-		console.log(closest);
+	$('#photos').delegate('li', 'click', function() {
+		// if ($(this).attr('data-id') == closest) {
+			$("#photos li[data-id=" + closest + "]").addClass("closest");
+		  $('#photos li:not(.closest)').animate({
+		    opacity: 0.25,
+		    top: "+=50"
+		  }, 500);
+		// }
 	});
 });
 
@@ -23,7 +29,7 @@ $.ajax({
 		closest = json["closest"];
 		var photos = json["photos"];
 		photos.forEach(function(photo) {
-			$("#photos").append('<li><img data-id="' + photo.id + '" src="' + photo.url + '"/><br/><p class="hidden">' + photo.location_name + '</p></li>');
+			$("#photos").append('<li data-id="' + photo.id + '"><img src="' + photo.url + '"/><p class="hidden">' + photo.location_name + '<br/>' + photo.distance_string + '</p></li>');
 		});
 	})
 	.fail(function() {

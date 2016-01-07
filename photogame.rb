@@ -39,11 +39,13 @@ def get_photos(user_location)
       :id => p.id,
       :url => "https://farm#{p.farm}.staticflickr.com/#{p.server}/#{p.id}_#{p.secret}.jpg",
       :location_name => "#{photo_info.location.region._content}, #{photo_info.location.country._content}",
-      :distance => get_distance(user_location, photo_geo)
+      :distance => get_distance(user_location, photo_geo),
+      :distance_string => "#{(get_distance(user_location, photo_geo).floor / 1000)} km"
     }
   end
-  with_geo_data.sort! { |k| k[:distance] }
-  { "closest" => with_geo_data[0][:id], "photos" => with_geo_data.shuffle }.to_json
+  sorted = with_geo_data.sort_by { |k| k[:distance] }
+  puts sorted
+  { "closest" => sorted.first[:id], "photos" => with_geo_data.shuffle }.to_json
 end
 
 def get_distance(user_location, photo_geo)

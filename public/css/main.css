@@ -1,1 +1,6 @@
-.hidden { display: none;}
+/*.hidden { display: none;}*/
+#photos li { display: block; float: left; width: 20%; overflow: hidden;}
+#photos li img { width: 100%; }
+#photos li p { bottom: -40px; }
+/*.wrong { opacity: 0.2; }
+*/
