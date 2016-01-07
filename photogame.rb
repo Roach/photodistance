@@ -31,7 +31,7 @@ end
 
 def get_photos(user_location)
   # Get 5 photos, extract ID, URL and GEO, then format the JSON.
-  photos = flickr.photos.search(:per_page => 500, :has_geo => true, :tags => ["city", "skyline"])
+  photos = flickr.photos.search(:per_page => 500, :has_geo => true, :tags => ["landmarks"])
   with_geo_data = photos.to_a.sample(10).map do |p|
     photo_info = flickr.photos.getInfo(:photo_id => p.id)
     photo_geo = photo_info.location
