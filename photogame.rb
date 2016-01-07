@@ -38,7 +38,7 @@ def get_photos(user_location)
     {
       :id => p.id,
       :url => "https://farm#{p.farm}.staticflickr.com/#{p.server}/#{p.id}_#{p.secret}.jpg",
-      :location_name => "#{photo_info.location.region._content}, #{photo_info.location.country._content}",
+      :location_name => "#{photo_info.location.locality._content}, #{photo_info.location.region._content}, #{photo_info.location.country._content}",
       :distance => get_distance(user_location, photo_geo),
       :distance_string => "#{(get_distance(user_location, photo_geo).floor / 1000)} km"
     }

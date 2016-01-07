@@ -4,4 +4,4 @@
 #photos { padding: 0px; margin: 0px; }
 #photos li { display: block; }
 #photos li img { width: 100%; }
-#photos li p { bottom: -40px; }
+#photos li p { position: relative; bottom: 35px; background: rgba(0, 0, 0, 0.4); color: #FFF; font: bold 15px Helvetica; padding: 5px 10px; margin: 0px; }
