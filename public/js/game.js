@@ -8,7 +8,7 @@ $(function() {
 		load_photos();
 	});
 
-	$('#retry-link').click(function( event ) {
+	$('#main').delegate('.retry-link', 'click', function() {
 		event.preventDefault();
 		$("#photos").empty();
 		$("#loading").show();
@@ -48,7 +48,7 @@ var load_photos = function() {
 		});
 	})
 	.fail(function(res) {
-		$("#errors").html("<h3>Error loading photos, please try again.</h3>");
+		$("#errors").html('<h3>Error loading photos, please <a href="#" class="retry-link">try again.</a></h3>');
 		$("#errors").show();
 	})
 	.always(function() {

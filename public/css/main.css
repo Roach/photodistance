@@ -1,3 +1,4 @@
+body { font-family: sans-serif; }
 #retry-link { position: fixed; top: 25px; left: 25px; }
 .label { display: none; margin-bottom: 0px; }
 #main { width: 50%; margin: auto; }
