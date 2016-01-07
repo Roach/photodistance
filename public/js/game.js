@@ -11,6 +11,7 @@ $(function() {
 	$('#retry-link').click(function( event ) {
 		event.preventDefault();
 		$("#photos").empty();
+		$("#loading").show();
 		load_photos();
 	});
 
@@ -49,5 +50,8 @@ var load_photos = function() {
 	.fail(function(res) {
 		$("#errors").html("<h3>Error loading photos, please try again.</h3>");
 		$("#errors").show();
+	})
+	.always(function() {
+		$("#loading").hide();
 	});
 }
